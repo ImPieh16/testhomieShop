@@ -3,28 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Forms</title>
+    <title>Trang Chủ</title>
     <link rel="stylesheet" href="CSS">
     <link rel="stylesheet" href="IMG">
-    <!-- <link rel="stylesheet" href="form"> -->
+    <style>
+        .form-container {
+            display: none;
+        }
+    </style>
     <script>
-        function loadForm(formName) {
-            fetch(formName)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('form-container').innerHTML = data;
-                });
+        function showForm(formId) {
+            document.getElementById('home').style.display = 'none';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById(formId).style.display = 'block';
         }
     </script>
 </head>
 <body>
     <nav>
-        <button onclick="loadForm('home.html')">Home</button>
-        <button onclick="loadForm('login.html')">Login</button>
-        <button onclick="loadForm('signup.html')">Signup</button>
+        <button onclick="showForm('home')">Trang Chủ</button>
+        <button onclick="showForm('login-form')">Đăng Nhập</button>
+        <button onclick="showForm('signup-form')">Đăng Ký</button>
     </nav>
-    <div id="form-container">
-        <!-- Form content will be loaded here -->
+    <div id="home">
+        <h1>Chào mừng đến với Trang Chủ</h1>
+        <!-- Thêm nội dung trang chủ ở đây -->
+    </div>
+    <div id="login-form" class="form-container">
+        <form action="">
+            <h1>Đăng Nhập</h1>
+            <label>Tên Đăng Nhập</label>
+            <input type="text">
+            
+            <label>Mật Khẩu</label>
+            <input type="password">
+            
+            <button>Đăng Nhập</button>
+            <a href="#" onclick="showForm('signup-form')">Đăng Ký</a>
+        </form>
+    </div>
+    <div id="signup-form" class="form-container">
+        <form action="">
+            <h1>Đăng Ký</h1>
+            <label>Tên Đăng Nhập</label>
+            <input type="text">
+            
+            <label>Mật Khẩu</label>
+            <input type="password">
+            
+            <button>Đăng Ký</button>
+            <a href="#" onclick="showForm('login-form')">Đăng Nhập</a>
+        </form>
     </div>
 </body>
 </html>
